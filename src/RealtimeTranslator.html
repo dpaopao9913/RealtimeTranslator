@@ -1,0 +1,98 @@
+<!-- 
+  ================================================================================
+      Copyright(C)2021 WAYS All Right Reserved.
+      
+      File Name: RealtimeTranslator.html
+      Designed by Ken'ichi KARASAWA
+
+      memo:
+        95.0.4638.69 (正式版本) （64 位） (cohort: Stable) で動作確認済み
+  ================================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Realtime Translator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/RealtimeTranslator.css" />
+    <link rel="shortcut icon" href="./img/favicon.ico">
+  </head>
+
+  <body>
+    <!-- <header>
+      <h2>Realtime Translator (Web Version v1.0)</h2>
+    </header> -->
+
+    <main>
+      <div class="container">
+
+        <!-- 音声認識を設置 -->
+        <div class="cls_speech_controlers">
+          <select id="select_speech_dialect" style="visibility: visible;"></select>
+          <select id="select_speech_language" onchange="updateCountry()"></select>
+          <button class="special" id="button_speech">
+            発言 <img src="./img./mic.png" height="20" width="20">
+          </button>
+          <button class="special" id="button_speech_reset">
+            リセット <img src="./img./reset.png" height="20" width="20">
+          </button>
+        </div>
+        <div class="cls_speech_recognition">
+          <div id="result_transcript"></div>
+          <p id="message" hidden aria-hidden="true">
+            Your browser doesn't support Speech Recognition. Sorry.
+          </p>
+        </div>
+
+        <!-- リアルタイム自動翻訳を設置 -->
+        <div class="cls_translation_controlers">
+          <select name="voices" id="voices"></select>
+          <select id="select_translation_language"></select>
+          <button class="special" id="button_utterance">
+            再生 <img src="./img./utter.png" height="20" width="20">
+          </button>
+        </div>
+        <div class="cls_realtime_translation">
+          <div id="translation"></div>
+        </div>       
+
+        <!-- 会話ログを設置 -->
+        <div class="cls_conversation_controlers">
+          <button class="special" id="button_download">
+            保存 <img src="./img./download.png" height="20" width="20">
+          </button>
+        </div>
+        <div class="cls_conversation_log">
+        </div>
+
+        <!-- レコーダーを設置 -->
+        <div class="cls_recording">
+          <div class="controls">
+            <button class="special" id="mic">録音許可（1回のみ）</button>
+            <button class="special" id="record" hidden>録音開始</button>
+          </div>
+          <ul id="recordings"></ul>
+        </div>
+
+        <!-- ステミキからの音声（相手の声）を音声認識＋翻訳（常に非表示） -->
+        <div id="stereo_mixer" hidden>
+        </div>
+
+      </div>
+    </main> 
+
+    <footer>
+      <p>
+        Realtime Translator v1.0 <br/>
+        Copyright(C) 2021 Ken'ichi KARASAWA (Ways Electron Co. Ltd.) All rights reserved.😇
+      </p>
+    </footer>
+    
+    <!-- javascript -->
+    <script type="text/javascript" src="./js/RealtimeTranslator.js"></script>
+
+  </body>
+</html>
